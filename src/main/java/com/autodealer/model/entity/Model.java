@@ -24,10 +24,9 @@ public class Model {
     @Column(nullable = false)
     private String modelName;
 
-
-
-    @ManyToMany
-    private Set<Engine> engines;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "engine_id", nullable = false)
+    private Engine engine;
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
@@ -47,9 +46,9 @@ public class Model {
         this.transmission = transmission;
     }
 
-    public Model(String modelName, Set<Engine> engines, Vehicle vehicle, Transmission transmission) {
+    public Model(String modelName, Engine engine, Vehicle vehicle, Transmission transmission) {
         this.modelName = modelName;
-        this.engines = engines;
+        this.engine = engine;
         this.vehicle = vehicle;
         this.transmission = transmission;
     }
@@ -63,12 +62,12 @@ public class Model {
         this.id = id;
     }
 
-    public void setEngines(Set<Engine> engines) {
-        this.engines = engines;
+    public void setEngines(Engine engine) {
+        this.engine = engine;
     }
 
-    public Set<Engine> getEngines() {
-        return engines;
+    public Engine getEngine() {
+        return engine;
     }
 
     public String getModelName() {
@@ -99,7 +98,7 @@ public class Model {
     public String toString() {
         return "Model {" +
                 "id=" + id +
-                ", engine=" + engines +
+                ", engine=" + engine +
                 ", modelName=" + modelName +
                 ", vehicle='" + vehicle +'\'' +
                 ", transmission='" + transmission+ '\'' +

@@ -28,9 +28,9 @@ public class Engine {
     @Enumerated(value = EnumType.STRING)
     private Fuel fuel;
 
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Model> model;
+    @Column(nullable = true)
+    @OneToMany(mappedBy = "engine", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Model> models;
 
     @Column(nullable = false)
     private int power;
@@ -45,10 +45,10 @@ public class Engine {
         this.power = power;
     }
 
-    public Engine(String engineName, Fuel fuel, Set<Model> model, int power) {
+    public Engine(String engineName, Fuel fuel, Set<Model> models, int power) {
         this.engineName = engineName;
         this.fuel = fuel;
-        this.model = model;
+        this.models = models;
         this.power = power;
     }
 
@@ -76,12 +76,12 @@ public class Engine {
         this.id = id;
     }
 
-    public Set<Model> getModel() {
-        return model;
+    public Set<Model> getModels() {
+        return models;
     }
 
-    public void setModel(Set<Model> model) {
-        this.model = model;
+    public void setModels(Set<Model> models) {
+        this.models = models;
     }
 
     public int getPower() {
