@@ -67,7 +67,7 @@ public class Run {
         session.persist(calina);
         session.persist(priora1);
         session.persist(priora2);
-        session.persist();
+        session.persist(corolla);
 
         session.getTransaction().commit();
         session.close();
