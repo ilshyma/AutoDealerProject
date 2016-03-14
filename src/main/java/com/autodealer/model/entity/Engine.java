@@ -5,6 +5,7 @@ import com.autodealer.model.enums.Fuel;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -29,13 +30,26 @@ public class Engine {
 
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Model> model;
+    private Set<Model> model;
 
     @Column(nullable = false)
     private int power;
 
 
     public Engine() {
+    }
+
+    public Engine(String engineName, Fuel fuel, int power) {
+        this.engineName = engineName;
+        this.fuel = fuel;
+        this.power = power;
+    }
+
+    public Engine(String engineName, Fuel fuel, Set<Model> model, int power) {
+        this.engineName = engineName;
+        this.fuel = fuel;
+        this.model = model;
+        this.power = power;
     }
 
     public String getEngineName() {
@@ -62,11 +76,11 @@ public class Engine {
         this.id = id;
     }
 
-    public List<Model> getModel() {
+    public Set<Model> getModel() {
         return model;
     }
 
-    public void setModel(List<Model> model) {
+    public void setModel(Set<Model> model) {
         this.model = model;
     }
 

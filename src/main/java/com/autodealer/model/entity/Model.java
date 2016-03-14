@@ -5,6 +5,7 @@ import com.autodealer.model.enums.Vehicle;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -26,7 +27,7 @@ public class Model {
 
 
     @ManyToMany
-    private List<Engine> engines;
+    private Set<Engine> engines;
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
@@ -40,6 +41,19 @@ public class Model {
     public Model() {
     }
 
+    public Model(String modelName, Vehicle vehicle, Transmission transmission) {
+        this.modelName = modelName;
+        this.vehicle = vehicle;
+        this.transmission = transmission;
+    }
+
+    public Model(String modelName, Set<Engine> engines, Vehicle vehicle, Transmission transmission) {
+        this.modelName = modelName;
+        this.engines = engines;
+        this.vehicle = vehicle;
+        this.transmission = transmission;
+    }
+
 
     public Long getId() {
         return id;
@@ -49,11 +63,11 @@ public class Model {
         this.id = id;
     }
 
-    public void setEngines(List<Engine> engines) {
+    public void setEngines(Set<Engine> engines) {
         this.engines = engines;
     }
 
-    public List<Engine> getEngines() {
+    public Set<Engine> getEngines() {
         return engines;
     }
 
