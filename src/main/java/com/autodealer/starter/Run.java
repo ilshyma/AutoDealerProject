@@ -11,6 +11,8 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 
 /**
  * Created by user on 14.03.2016.
@@ -23,7 +25,13 @@ public class Run {
 
 
     public static void main(String[] args) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+
+//properties to access DB
+// /dbProp/hibernateH2.cfg.xml
+// /dbProp/hibernateMySQL.cfg.xml
+
+
+        sessionFactory = new Configuration().configure("/dbProp/hibernateMySQL.cfg.xml").buildSessionFactory();
 
         createEnginePSVM();
         createEngineHibernate();
@@ -44,7 +52,7 @@ public class Run {
         vaz2112.setEngineName("motoryaka_taz");
 
         final Model corolla = new Model();
-        corolla.setEngine(vaz2112);
+        corolla.setEngines();
         corolla.setModelName("Corolla");
         corolla.setTransmission(Transmission.AT);
         corolla.setVehicle(Vehicle.SEDAN);

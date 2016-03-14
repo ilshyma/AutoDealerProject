@@ -4,7 +4,9 @@ package com.autodealer.model.entity;
 import com.autodealer.model.enums.Fuel;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by user on 14.03.2016.
@@ -14,20 +16,20 @@ public class Engine {
 
 
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue
+    @Column(nullable = false)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String engineName;
 
     @Column(nullable = false)
-    @Enumerated(value = EnumType.ORDINAL)
+    @Enumerated(value = EnumType.STRING)
     private Fuel fuel;
 
 
-    @OneToMany
-    private Set<Model> models;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Model> model;
 
     @Column(nullable = false)
     private int power;
@@ -60,12 +62,12 @@ public class Engine {
         this.id = id;
     }
 
-    public Set<Model> getModels() {
-        return models;
+    public List<Model> getModel() {
+        return model;
     }
 
-    public void setModels(Set<Model> models) {
-        this.models = models;
+    public void setModel(List<Model> model) {
+        this.model = model;
     }
 
     public int getPower() {

@@ -4,6 +4,9 @@ import com.autodealer.model.enums.Transmission;
 import com.autodealer.model.enums.Vehicle;
 
 import javax.persistence.*;
+import java.util.List;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by user on 14.03.2016.
@@ -13,23 +16,24 @@ import javax.persistence.*;
 public class Model {
 
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
     private String modelName;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Engine engine;
+
+    @ManyToMany
+    private List<Engine> engines;
 
     @Column(nullable = false)
-    @Enumerated(value = EnumType.ORDINAL)
+    @Enumerated(value = EnumType.STRING)
     private Vehicle vehicle;
 
     @Column(nullable = false)
-    @Enumerated(value = EnumType.ORDINAL)
+    @Enumerated(value = EnumType.STRING)
     private Transmission transmission;
 
 
@@ -37,22 +41,20 @@ public class Model {
     }
 
 
-
-
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setEngines(List<Engine> engines) {
+        this.engines = engines;
+    }
+
+    public List<Engine> getEngines() {
+        return engines;
     }
 
     public String getModelName() {
@@ -83,7 +85,7 @@ public class Model {
     public String toString() {
         return "Model {" +
                 "id=" + id +
-                ", engine=" + engine +
+                ", engine=" + engines +
                 ", modelName=" + modelName +
                 ", vehicle='" + vehicle +'\'' +
                 ", transmission='" + transmission+ '\'' +
