@@ -1,5 +1,6 @@
 package com.autodealer.starter;
 
+import com.autodealer.model.entity.Car;
 import com.autodealer.model.entity.Engine;
 import com.autodealer.model.entity.Model;
 import com.autodealer.model.enums.Fuel;
@@ -11,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,6 +57,11 @@ public class Run {
         Model priora2 = new Model("Priora", engineLada101, Vehicle.SEDAN, Transmission.MT);
         Model corolla = new Model("Corolla", engineToyota103, Vehicle.SEDAN, Transmission.AT);
 
+        Car car1 = new Car();
+        car1.setBrand("TOYOTA");
+car1.setModel(corolla);
+        car1.setProductionYear((LocalDate.now().getYear()));
+
         log.info("CREATE HIBERNATE SESSION");
         final Session session = sessionFactory.openSession();
         session.getTransaction().begin();
@@ -68,6 +75,8 @@ public class Run {
         session.persist(priora1);
         session.persist(priora2);
         session.persist(corolla);
+
+        session.persist(car1);
 
         session.getTransaction().commit();
         session.close();

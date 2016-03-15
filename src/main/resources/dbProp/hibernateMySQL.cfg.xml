@@ -18,6 +18,7 @@
 
         <mapping class="com.autodealer.model.entity.Model"/>
         <mapping class="com.autodealer.model.entity.Engine"/>
+        <mapping class="com.autodealer.model.entity.Car"/>
 
         <mapping class="com.autodealer.model.enums.Vehicle"/>
         <mapping class="com.autodealer.model.enums.Transmission"/>
