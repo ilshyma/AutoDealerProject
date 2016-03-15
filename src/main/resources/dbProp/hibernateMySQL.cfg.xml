@@ -21,6 +21,8 @@
         <mapping class="com.autodealer.model.entity.Car"/>
         <mapping class="com.autodealer.model.entity.User"/>
         <mapping class="com.autodealer.model.entity.Personal"/>
+        <mapping class="com.autodealer.model.entity.AutoDealer"/>
+        <mapping class="com.autodealer.model.entity.AutoDealerInfo"/>
 
         <mapping class="com.autodealer.model.enums.Vehicle"/>
         <mapping class="com.autodealer.model.enums.Transmission"/>
