@@ -30,6 +30,11 @@ public class Car {
     @Column(nullable = false)
     private int productionYear;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "autoDealer_id", nullable = false)
+    private AutoDealer autoDealer;
+
+
     public Car() {
     }
 
@@ -65,4 +70,13 @@ public class Car {
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
     }
+
+    public AutoDealer getAutoDealer() {
+        return autoDealer;
+    }
+
+    public void setAutoDealer(AutoDealer autoDealer) {
+        this.autoDealer = autoDealer;
+    }
+
 }

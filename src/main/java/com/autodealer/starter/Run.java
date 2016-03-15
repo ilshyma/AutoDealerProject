@@ -30,42 +30,12 @@ public class Run {
 
         sessionFactory = new Configuration().configure("/dbProp/hibernateMySQL.cfg.xml").buildSessionFactory();
 
-        createAutoDealer();
         createEngine();
         createPersonal();
-
 
         log.info("----final-----");
 
     }
-
-    private static void createAutoDealer() {
-        log.info("CREATE Avtosalon");
-        AutoDealerInfo autoCentrAelita1 = new AutoDealerInfo("avtoCentr AELITA", "Naberegnaya 32", 48.4373969, 35.0688844);
-        AutoDealerInfo autoCentrAelita2 = new AutoDealerInfo("avtoCentr BROVARU", "Buligina 40", 48.4459519, 35.0608485);
-        AutoDealerInfo victorAndSons = new AutoDealerInfo("rabochaya 11", "pb@pb.ya", 48.4459879, 35.0608485, "38 056 777 77 77", "victorAndSons", "mersedes.dp.ua" );
-
-        AutoDealer autoDealer1 = new AutoDealer();
-        AutoDealer autoDealer2 = new AutoDealer();
-        AutoDealer autoDealer3 = new AutoDealer();
-
-        autoDealer1.setAutoDealerInfo(autoCentrAelita1);
-        autoDealer2.setAutoDealerInfo(autoCentrAelita2);
-        autoDealer3.setAutoDealerInfo(victorAndSons);
-
-        final Session session = sessionFactory.openSession();
-        session.getTransaction().begin();
-
-        session.persist(autoDealer1);
-        session.persist(autoDealer2);
-        session.persist(autoDealer3);
-
-        session.getTransaction().commit();
-        session.close();
-
-
-    }
-
 
     private static void createPersonal() {
         log.info("CREATE Personal");
@@ -103,10 +73,32 @@ public class Run {
         Model priora2 = new Model("Priora", engineLada101, Vehicle.SEDAN, Transmission.MT);
         Model corolla = new Model("Corolla", engineToyota103, Vehicle.SEDAN, Transmission.AT);
 
+        log.info("CREATE Avtosalon");
+        AutoDealerInfo autoCentrAelita1 = new AutoDealerInfo("avtoCentr AELITA", "Naberegnaya 32", 48.4373969, 35.0688844);
+        AutoDealerInfo autoCentrAelita2 = new AutoDealerInfo("avtoCentr BROVARU", "Buligina 40", 48.4459519, 35.0608485);
+        AutoDealerInfo victorAndSons = new AutoDealerInfo("rabochaya 11", "pb@pb.ya", 48.4459879, 35.0608485, "38 056 777 77 77", "victorAndSons", "mersedes.dp.ua" );
+
+        AutoDealer autoDealer1 = new AutoDealer();
+        AutoDealer autoDealer2 = new AutoDealer();
+        AutoDealer autoDealer3 = new AutoDealer();
+
+        autoDealer1.setAutoDealerInfo(autoCentrAelita1);
+        autoDealer2.setAutoDealerInfo(autoCentrAelita2);
+        autoDealer3.setAutoDealerInfo(victorAndSons);
+
+
+
         Car car1 = new Car();
         car1.setBrand("TOYOTA");
         car1.setModel(corolla);
         car1.setProductionYear((LocalDate.now().getYear()));
+        car1.setAutoDealer(autoDealer1);
+
+        Car car2 = new Car();
+        car2.setBrand("Lada");
+        car2.setModel(calina);
+        car2.setProductionYear((LocalDate.now().getYear()));
+        car2.setAutoDealer(autoDealer2);
 
         log.info("CREATE HIBERNATE SESSION");
         final Session session = sessionFactory.openSession();
@@ -122,7 +114,12 @@ public class Run {
         session.persist(priora2);
         session.persist(corolla);
 
+        session.persist(autoDealer1);
+        session.persist(autoDealer2);
+        session.persist(autoDealer3);
+
         session.persist(car1);
+        session.persist(car2);
 
         session.getTransaction().commit();
         session.close();
