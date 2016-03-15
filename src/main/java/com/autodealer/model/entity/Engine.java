@@ -4,7 +4,6 @@ package com.autodealer.model.entity;
 import com.autodealer.model.enums.Fuel;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -28,10 +27,6 @@ public class Engine {
     @Enumerated(value = EnumType.STRING)
     private Fuel fuel;
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "engine", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Model> models;
-
     @Column(nullable = false)
     private int power;
 
@@ -48,7 +43,6 @@ public class Engine {
     public Engine(String engineName, Fuel fuel, Set<Model> models, int power) {
         this.engineName = engineName;
         this.fuel = fuel;
-        this.models = models;
         this.power = power;
     }
 
@@ -76,13 +70,6 @@ public class Engine {
         this.id = id;
     }
 
-    public Set<Model> getModels() {
-        return models;
-    }
-
-    public void setModels(Set<Model> models) {
-        this.models = models;
-    }
 
     public int getPower() {
         return power;

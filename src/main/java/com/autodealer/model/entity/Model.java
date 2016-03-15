@@ -95,6 +95,7 @@ public class Model {
         this.vehicle = vehicle;
     }
 
+
     @Override
     public String toString() {
         return "Model {" +

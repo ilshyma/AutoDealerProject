@@ -1,11 +1,7 @@
 package com.autodealer.starter;
 
-import com.autodealer.model.entity.Car;
-import com.autodealer.model.entity.Engine;
-import com.autodealer.model.entity.Model;
-import com.autodealer.model.enums.Fuel;
-import com.autodealer.model.enums.Transmission;
-import com.autodealer.model.enums.Vehicle;
+import com.autodealer.model.entity.*;
+import com.autodealer.model.enums.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
@@ -37,15 +31,37 @@ public class Run {
         sessionFactory = new Configuration().configure("/dbProp/hibernateMySQL.cfg.xml").buildSessionFactory();
 
         createEngine();
+        createPersonal();
 
         log.info("----final-----");
 
     }
 
+    private static void createPersonal() {
+        log.info("CREATE Personal");
+        User annDirector = new User("admin", "Anna", "123456", Role.ADMIN);
+        User vladManager = new User("user", "Vladislav", "123456", Role.USER);
+
+        Personal personal1 = new Personal(PersonalPost.DIRECTOR, LocalDate.now(), "Female", annDirector);
+        Personal personal2 = new Personal(PersonalPost.MANAGER, LocalDate.now(), "Male", vladManager);
+
+
+        final Session session = sessionFactory.openSession();
+        session.getTransaction().begin();
+
+        session.persist(annDirector);
+        session.persist(vladManager);
+        session.persist(personal1);
+        session.persist(personal2);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
     static void createEngine() {
 
 
-        log.info("CREATE Engines");
+        log.info("CREATE Cars (Models and Engines) ");
         Engine engineLada86 = new Engine("21121", Fuel.PETROL, 86);
         Engine engineLada101 = new Engine("21124", Fuel.PETROL, 101);
         Engine engineLada109 = new Engine("21126", Fuel.PETROL, 109);
@@ -59,7 +75,7 @@ public class Run {
 
         Car car1 = new Car();
         car1.setBrand("TOYOTA");
-car1.setModel(corolla);
+        car1.setModel(corolla);
         car1.setProductionYear((LocalDate.now().getYear()));
 
         log.info("CREATE HIBERNATE SESSION");

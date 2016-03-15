@@ -17,13 +17,14 @@ public class Car {
 
     @Id
     @Column(nullable = false)
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private  String brand;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "model_id", nullable = false)
     private Model model;
 
     @Column(nullable = false)
