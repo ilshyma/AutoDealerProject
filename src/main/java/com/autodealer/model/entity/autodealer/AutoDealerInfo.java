@@ -1,4 +1,4 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.autodealer;
 
 /**
  * Created by user on 15.03.2016.

@@ -16,19 +16,19 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="connection.isolation">4</property>
 
-        <mapping class="com.autodealer.model.entity.Model"/>
-        <mapping class="com.autodealer.model.entity.Engine"/>
-        <mapping class="com.autodealer.model.entity.Car"/>
-        <mapping class="com.autodealer.model.entity.User"/>
-        <mapping class="com.autodealer.model.entity.Personal"/>
-        <mapping class="com.autodealer.model.entity.AutoDealer"/>
-        <mapping class="com.autodealer.model.entity.AutoDealerInfo"/>
+        <mapping class="com.autodealer.model.entity.car.Model"/>
+        <mapping class="com.autodealer.model.entity.car.Engine"/>
+        <mapping class="com.autodealer.model.entity.car.Car"/>
+        <mapping class="com.autodealer.model.entity.personal.User"/>
+        <mapping class="com.autodealer.model.entity.personal.Personal"/>
+        <mapping class="com.autodealer.model.entity.autodealer.AutoDealer"/>
+        <mapping class="com.autodealer.model.entity.autodealer.AutoDealerInfo"/>
 
-        <mapping class="com.autodealer.model.enums.Vehicle"/>
-        <mapping class="com.autodealer.model.enums.Transmission"/>
-        <mapping class="com.autodealer.model.enums.Fuel"/>
-        <mapping class="com.autodealer.model.enums.PersonalPost"/>
-        <mapping class="com.autodealer.model.enums.Role"/>
+        <mapping class="com.autodealer.model.entity.car.Vehicle"/>
+        <mapping class="com.autodealer.model.entity.car.Transmission"/>
+        <mapping class="com.autodealer.model.entity.car.Fuel"/>
+        <mapping class="com.autodealer.model.entity.personal.PersonalPost"/>
+        <mapping class="com.autodealer.model.entity.personal.Role"/>
     </session-factory>
 
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package com.autodealer.model.enums;
+package com.autodealer.model.entity.car;
 
 /**
  * Created by user on 14.03.2016.

@@ -1,9 +1,10 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.personal;
 
-import com.autodealer.model.enums.PersonalPost;
+import com.autodealer.model.entity.autodealer.AutoDealer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -29,17 +30,21 @@ public class Personal {
     private LocalDate receiptDate;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany
+    private List<AutoDealer> autoDealerList;
 
     public Personal() {
     }
 
-    public Personal(PersonalPost personalPost, LocalDate receiptDate, String sex, User user) {
+    public Personal(PersonalPost personalPost, LocalDate receiptDate, String sex, User user, List<AutoDealer> autoDealerList) {
         this.personalPost = personalPost;
         this.receiptDate = receiptDate;
         this.sex = sex;
         this.user = user;
+        this.autoDealerList = autoDealerList;
     }
 
     public Long getId() {
@@ -80,5 +85,13 @@ public class Personal {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<AutoDealer> getAutoDealerList() {
+        return autoDealerList;
+    }
+
+    public void setAutoDealerList(List<AutoDealer> autoDealerList) {
+        this.autoDealerList = autoDealerList;
     }
 }

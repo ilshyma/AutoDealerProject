@@ -1,11 +1,6 @@
-package com.autodealer.model.entity;
-
-import com.autodealer.model.enums.Transmission;
-import com.autodealer.model.enums.Vehicle;
+package com.autodealer.model.entity.car;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

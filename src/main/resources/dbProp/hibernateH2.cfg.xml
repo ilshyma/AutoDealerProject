@@ -15,12 +15,12 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="connection.isolation">4</property>
 
-        <mapping class="com.autodealer.model.entity.Model"/>
-        <mapping class="com.autodealer.model.entity.Engine"/>
+        <mapping class="com.autodealer.model.entity.car.Model"/>
+        <mapping class="com.autodealer.model.entity.car.Engine"/>
 
-        <mapping class="com.autodealer.model.enums.Vehicle"/>
-        <mapping class="com.autodealer.model.enums.Transmission"/>
-        <mapping class="com.autodealer.model.enums.Fuel"/>
+        <mapping class="com.autodealer.model.entity.car.Vehicle"/>
+        <mapping class="com.autodealer.model.entity.car.Transmission"/>
+        <mapping class="com.autodealer.model.entity.car.Fuel"/>
     </session-factory>
 
 </hibernate-configuration>

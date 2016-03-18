@@ -1,7 +1,5 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.car;
 
-
-import com.autodealer.model.enums.Fuel;
 
 import javax.persistence.*;
 import java.util.Set;

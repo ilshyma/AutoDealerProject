@@ -1,10 +1,8 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.personal;
 
 /**
  * Created by user on 15.03.2016.
  */
-
-import com.autodealer.model.enums.Role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

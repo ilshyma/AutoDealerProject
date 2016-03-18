@@ -1,6 +1,10 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.autodealer;
+
+import com.autodealer.model.entity.personal.Personal;
 
 import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by user on 15.03.2016.
  */
@@ -15,6 +19,9 @@ public class AutoDealer {
     @Embedded
     private AutoDealerInfo autoDealerInfo;
 
+
+    @ManyToMany(mappedBy = "autoDealerList")
+    private List<Personal> personalList;
 
     public AutoDealer() {
     }
@@ -37,5 +44,13 @@ public class AutoDealer {
 
     public void setAutoDealerInfo(AutoDealerInfo autoDealerInfo) {
         this.autoDealerInfo = autoDealerInfo;
+    }
+
+    public List<Personal> getPersonalList() {
+        return personalList;
+    }
+
+    public void setPersonalList(List<Personal> personalList) {
+        this.personalList = personalList;
     }
 }

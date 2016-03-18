@@ -1,13 +1,8 @@
-package com.autodealer.model.entity;
+package com.autodealer.model.entity.car;
 
-import org.hibernate.annotations.ManyToAny;
+import com.autodealer.model.entity.autodealer.AutoDealer;
 
 import javax.persistence.*;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by ilshyma on 14.03.2016.
