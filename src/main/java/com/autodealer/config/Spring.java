@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 
 @Configuration
-@PropertySource(value = { "classpath:/hibernate_Spring_MySQL.properties" })
+@PropertySource(value = { "classpath:/dbProp/hibernate_Spring_MySQL.properties" })
 public class Spring {
 
     @Autowired
