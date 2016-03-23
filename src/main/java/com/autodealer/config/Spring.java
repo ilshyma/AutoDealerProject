@@ -33,7 +33,6 @@ public class Spring {
         hikariConfig.setJdbcUrl(environment.getRequiredProperty("jdbc.url"));
         hikariConfig.setUsername(environment.getRequiredProperty("jdbc.username"));
         hikariConfig.setPassword(environment.getRequiredProperty("jdbc.password"));
-        hikariConfig.setDataSourceProperties(additionalProperties());
         return new HikariDataSource(hikariConfig);
     }
 
@@ -42,7 +41,7 @@ public class Spring {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.autodealer");
-        sessionFactory.setConfigLocation(new ClassPathResource("hibernate_Spring_MySQL.cfg.cfg.xml"));
+        sessionFactory.setHibernateProperties(additionalProperties());
 
         return sessionFactory;
     }

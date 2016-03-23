@@ -1,5 +1,7 @@
 package com.autodealer.model.entity.car;
 
+import java.util.List;
+
 /**
  * Created by ilshyma on 18.03.2016.
  */
@@ -7,9 +9,9 @@ public interface iCarRepo {
 
     Car getById(Long id);
 
-    Car findCarByModel(Model model);
+    List<Car> findCarByModel(Model model);
 
-    Car findCarByBrand(String brand);
+    List<Car> findCarByBrand(String brand);
 
     void addCar(Car car);
 
