@@ -15,5 +15,9 @@ public interface iCarRepo {
 
     void addCar(Car car);
 
+    void addEngine(Engine engine);
+
+    void addModel(Model model);
+
     void deleteCar (Car car);
 }
