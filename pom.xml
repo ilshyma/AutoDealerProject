@@ -12,6 +12,7 @@
         <hibernate.version>5.1.0.Final</hibernate.version>
         <mysql.version>5.1.24</mysql.version>
         <junit.version>4.12</junit.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
 
 
@@ -40,6 +41,12 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -53,6 +60,23 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
 
     <dependency>
         <groupId>junit</groupId>
