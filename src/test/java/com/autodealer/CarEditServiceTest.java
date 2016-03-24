@@ -8,7 +8,9 @@ import com.autodealer.model.entity.personal.Personal;
 import com.autodealer.model.entity.personal.PersonalPost;
 import com.autodealer.model.entity.personal.Role;
 import com.autodealer.model.entity.personal.User;
-import com.autodealer.service.CarService;
+import com.autodealer.service.CarEditService;
+import com.autodealer.service.DealerEditService;
+import com.autodealer.service.PersonalEditService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,13 +26,16 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Persistence.class)
-public class CarEditService {
+public class CarEditServiceTest {
 
     @Inject
     private CarEditService carEditService;
 
     @Inject
-    private CarRepo carRepo;
+    private DealerEditService dealerEditService;
+
+    @Inject
+    private PersonalEditService personalEditService;
 
     @Test
     public void testAddCar() {
@@ -85,38 +90,17 @@ public class CarEditService {
 
         System.out.println("------SAVE INTO BD-------");
 
+        // final Engine engine1 = carEditService.createEngine("147e", Fuel.PETROL, 103);
+        // final AutoDealer autoDealer777 = dealerEditService.createDealer("AELITA","nabereznaya 22", 48.4459879, 35.0608485);
 
-        carService.createCar("Toyota",
-                                    carService.createModel("Corolla",
-                                            carService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT),
-                                    2015, )
-        carRepo.addEngine(engineLada86);
-        carRepo.addEngine(engineLada101);
-        carRepo.addEngine(engineLada109);
-        carRepo.addEngine(engineToyota103);
+        personalEditService.createPersonal(PersonalPost.DIRECTOR, "M", LocalDate.of(2015, 02, 01), personalEditService.createUser("admin", "Director", "123456", Role.ADMIN) );
 
-        carRepo.addModel(calina);
-        carRepo.addModel(priora1);
-        carRepo.addModel(priora2);
-        carRepo.addModel(corolla);
 
-        carRepo.addCar(car1);
-        carRepo.addCar(car2);
+        carEditService.createCar("Toyota", carEditService.createModel("Corolla", carEditService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT),
+                2015, dealerEditService.createDealer("AELITA", "nabereznaya 22", 48.4459879, 35.0608485));
+
 
     }
-        /*
-        final Author orwell = new Author();
-
-        orwell.setName("George Orwell");
-        orwell.setBirthday(LocalDate.parse("1905-02-03"));
-        orwell.setCountry("UK");
-
-        bookEditService.createAuthor(
-                orwell.getName(),
-                orwell.getCountry(),
-                orwell.getBirthday()
-        );
-        */
 
 
 }

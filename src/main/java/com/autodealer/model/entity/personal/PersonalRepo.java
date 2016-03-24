@@ -10,4 +10,6 @@ public interface PersonalRepo {
     void updatePersonal (Personal personal);
 
     void deletePersonal (Personal personal);
+
+
 }

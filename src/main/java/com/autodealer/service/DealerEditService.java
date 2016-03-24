@@ -14,4 +14,6 @@ public interface DealerEditService {
     AutoDealer createDealer(String pointName, String adress, double geoPositionX, double geoPositionY, String phone, String email, String site, List<Personal> personalList);
 
     AutoDealer createDealer(String pointName, String adress, double geoPositionX, double geoPositionY, List<Personal> personalList);
+
+    AutoDealer createDealer(String pointName, String adress, double geoPositionX, double geoPositionY);
 }
