@@ -7,6 +7,7 @@ import com.autodealer.model.entity.car.Model;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -18,6 +19,7 @@ import static com.autodealer.repository.Util.castList;
  */
 
 @Repository
+@Transactional
 public class CarRepoImpl implements CarRepo {
 
     @Inject

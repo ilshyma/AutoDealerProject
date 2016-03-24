@@ -2,7 +2,7 @@ package com.autodealer.service.impl;
 
 import com.autodealer.model.entity.autodealer.AutoDealer;
 import com.autodealer.model.entity.car.*;
-import com.autodealer.service.CarService;
+import com.autodealer.service.CarEditService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,9 +17,9 @@ import javax.inject.Inject;
 
 @Service
 @Transactional
-public class CarServiceImpl implements CarService {
+public class CarEditServiceImpl implements CarEditService {
 
-    private static final Logger log = LoggerFactory.getLogger(CarServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(CarEditServiceImpl.class);
 
     @Inject
     private CarRepo carRepo;

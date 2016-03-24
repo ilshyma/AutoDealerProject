@@ -27,7 +27,7 @@ import java.util.List;
 public class CarEditService {
 
     @Inject
-    private CarService carService;
+    private CarEditService carEditService;
 
     @Inject
     private CarRepo carRepo;
@@ -86,6 +86,10 @@ public class CarEditService {
         System.out.println("------SAVE INTO BD-------");
 
 
+        carService.createCar("Toyota",
+                                    carService.createModel("Corolla",
+                                            carService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT),
+                                    2015, )
         carRepo.addEngine(engineLada86);
         carRepo.addEngine(engineLada101);
         carRepo.addEngine(engineLada109);
