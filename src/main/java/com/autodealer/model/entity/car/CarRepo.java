@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by ilshyma on 18.03.2016.
  */
-public interface iCarRepo {
+public interface CarRepo {
 
     Car getById(Long id);
 

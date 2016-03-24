@@ -1,22 +1,14 @@
 package com.autodealer.repository;
 
-import com.autodealer.model.entity.autodealer.AutoDealer;
-import com.autodealer.model.entity.autodealer.AutoDealerInfo;
-import com.autodealer.model.entity.car.*;
-import com.autodealer.model.entity.personal.Personal;
-import com.autodealer.model.entity.personal.PersonalPost;
-import com.autodealer.model.entity.personal.Role;
-import com.autodealer.model.entity.personal.User;
+import com.autodealer.model.entity.car.Car;
+import com.autodealer.model.entity.car.CarRepo;
+import com.autodealer.model.entity.car.Engine;
+import com.autodealer.model.entity.car.Model;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.autodealer.repository.Util.castList;
@@ -26,13 +18,11 @@ import static com.autodealer.repository.Util.castList;
  */
 
 @Repository
-public class CarRepoImpl implements iCarRepo {
-
-
-
+public class CarRepoImpl implements CarRepo {
 
     @Inject
     private SessionFactory sessionFactory;
+
 
     @Override
     public Car getById(Long id) {
@@ -63,7 +53,6 @@ public class CarRepoImpl implements iCarRepo {
     public void addCar(Car car) {
         {
             sessionFactory.getCurrentSession().save(car);
-
         }
     }
 

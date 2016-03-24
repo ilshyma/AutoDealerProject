@@ -1,4 +1,4 @@
-package com.autodealer.service;
+package com.autodealer.service.impl;
 
 import com.autodealer.model.entity.autodealer.AutoDealer;
 import com.autodealer.model.entity.autodealer.AutoDealerInfo;
@@ -7,7 +7,7 @@ import com.autodealer.model.entity.personal.Personal;
 import com.autodealer.model.entity.personal.PersonalPost;
 import com.autodealer.model.entity.personal.Role;
 import com.autodealer.model.entity.personal.User;
-import com.sun.javafx.sg.prism.NGShape;
+import com.autodealer.service.CarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,12 +26,13 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CarServiceImpl implements iCarService {
+public class CarServiceImpl implements CarService {
 
     private static final Logger log = LoggerFactory.getLogger(CarServiceImpl.class);
 
     @Inject
-    iCarRepo carRepo;
+    private CarRepo carRepo;
+
 
     @Override
     public Engine createEngine(String engineName, Fuel fuel, int power) {
@@ -58,7 +59,7 @@ public class CarServiceImpl implements iCarService {
 
     @Override
     public Car createCar(String brand, Model model, int productionYear, AutoDealer autoDealer) {
-        final  Car car = new Car();
+        final Car car = new Car();
         car.setBrand(brand);
         car.setModel(model);
         car.setProductionYear(productionYear);
@@ -67,7 +68,7 @@ public class CarServiceImpl implements iCarService {
         carRepo.addCar(car);
         return car;
     }
-}
+
 
     @PostConstruct
     protected void initialize() {
@@ -122,5 +123,22 @@ public class CarServiceImpl implements iCarService {
         Personal personal1 = new Personal(PersonalPost.DIRECTOR, LocalDate.now(), "Female", annDirector, autoDealerList1);
         Personal personal2 = new Personal(PersonalPost.MANAGER, LocalDate.now(), "Male", vladManager, autoDealerList2);
 
+        log.info("------SAVE INTO BD-------");
+
+
+        carRepo.addEngine(engineLada86);
+        carRepo.addEngine(engineLada101);
+        carRepo.addEngine(engineLada109);
+        carRepo.addEngine(engineToyota103);
+
+        carRepo.addModel(calina);
+        carRepo.addModel(priora1);
+        carRepo.addModel(priora2);
+        carRepo.addModel(corolla);
+
+        carRepo.addCar(car1);
+        carRepo.addCar(car2);
+
 
     }
+}

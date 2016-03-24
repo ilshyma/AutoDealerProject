@@ -3,7 +3,7 @@ package com.autodealer.model.entity.autodealer;
 /**
  * Created by ilshyma on 18.03.2016.
  */
-public interface iAutoDealerRepo {
+public interface AutoDealerRepo {
 
     void addDealer (AutoDealer autoDealer);
 

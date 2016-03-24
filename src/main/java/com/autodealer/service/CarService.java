@@ -6,7 +6,8 @@ import com.autodealer.model.entity.car.*;
 /**
  * Created by ilshyma on 23.03.2016.
  */
-public interface iCarService {
+
+public interface CarService {
 
     Engine createEngine(String engineName, Fuel fuel, int power);
 
