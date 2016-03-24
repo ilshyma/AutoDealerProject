@@ -1,5 +1,6 @@
 package com.autodealer.service.impl;
 
+import com.autodealer.model.entity.autodealer.AutoDealer;
 import com.autodealer.model.entity.personal.*;
 import com.autodealer.service.PersonalEditService;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,21 @@ public class PersonalEditServiceImpl implements PersonalEditService {
         personal.setSex(sex);
         personal.setReceiptDate(receiptDate);
         personal.setUser(user);
+
+
+        personalRepo.addPersonal(personal);
+
+        return personal;
+    }
+
+    @Override
+    public Personal createPersonal(PersonalPost personalPost, String sex, LocalDate receiptDate, User user, AutoDealer autoDealer) {
+        final Personal personal = new Personal();
+        personal.setPersonalPost(personalPost);
+        personal.setSex(sex);
+        personal.setReceiptDate(receiptDate);
+        personal.setUser(user);
+        personal.addAutoDealer(autoDealer);
 
         personalRepo.addPersonal(personal);
 

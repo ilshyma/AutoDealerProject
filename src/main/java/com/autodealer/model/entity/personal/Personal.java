@@ -4,6 +4,7 @@ import com.autodealer.model.entity.autodealer.AutoDealer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -35,6 +36,14 @@ public class Personal {
 
     @ManyToMany
     private List<AutoDealer> autoDealerList;
+
+    public void addAutoDealer(AutoDealer autoDealer) {
+        if (autoDealerList == null) {
+            autoDealerList = new ArrayList<>();
+        }
+        this.autoDealerList.add(autoDealer);
+    }
+
 
     public Personal() {
     }

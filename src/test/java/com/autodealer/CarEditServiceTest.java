@@ -40,6 +40,25 @@ public class CarEditServiceTest {
     @Test
     public void testAddCar() {
 
+
+        System.out.println("------SAVE INTO BD-------");
+
+        // final Engine engine1 = carEditService.createEngine("147e", Fuel.PETROL, 103);
+        // final AutoDealer autoDealer777 = dealerEditService.createDealer("AELITA","nabereznaya 22", 48.4459879, 35.0608485);
+
+        personalEditService.createPersonal(PersonalPost.DIRECTOR, "M", LocalDate.of(2015, 02, 01), personalEditService.createUser("admin", "Director", "123456", Role.ADMIN) );
+        personalEditService.createPersonal(PersonalPost.MANAGER, "M", LocalDate.of(2015, 01, 01), personalEditService.createUser("admin", "Director", "123456", Role.ADMIN), dealerEditService.createDealer("AELITA2", "nabereznaya 252", 48.4459879, 35.0608485));
+
+
+        carEditService.createCar("Toyota", carEditService.createModel("Corolla", carEditService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT),
+                2015, dealerEditService.createDealer("AELITA", "nabereznaya 22", 48.4459879, 35.0608485));
+
+
+    }
+
+
+
+        /*
         Engine engineLada86 = new Engine("21121", Fuel.PETROL, 86);
         Engine engineLada101 = new Engine("21124", Fuel.PETROL, 101);
         Engine engineLada109 = new Engine("21126", Fuel.PETROL, 109);
@@ -88,19 +107,6 @@ public class CarEditServiceTest {
         Personal personal1 = new Personal(PersonalPost.DIRECTOR, LocalDate.now(), "Female", annDirector, autoDealerList1);
         Personal personal2 = new Personal(PersonalPost.MANAGER, LocalDate.now(), "Male", vladManager, autoDealerList2);
 
-        System.out.println("------SAVE INTO BD-------");
-
-        // final Engine engine1 = carEditService.createEngine("147e", Fuel.PETROL, 103);
-        // final AutoDealer autoDealer777 = dealerEditService.createDealer("AELITA","nabereznaya 22", 48.4459879, 35.0608485);
-
-        personalEditService.createPersonal(PersonalPost.DIRECTOR, "M", LocalDate.of(2015, 02, 01), personalEditService.createUser("admin", "Director", "123456", Role.ADMIN) );
-
-
-        carEditService.createCar("Toyota", carEditService.createModel("Corolla", carEditService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT),
-                2015, dealerEditService.createDealer("AELITA", "nabereznaya 22", 48.4459879, 35.0608485));
-
-
-    }
-
+*/
 
 }
