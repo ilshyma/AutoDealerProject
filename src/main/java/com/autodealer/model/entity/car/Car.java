@@ -8,6 +8,9 @@ import javax.persistence.*;
  * Created by ilshyma on 14.03.2016.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "ALLCARS", query = "FROM Car c")
+})
 public class Car {
 
     @Id

@@ -13,6 +13,8 @@ public interface CarRepo {
 
     List<Car> findCarByBrand(String brand);
 
+    List getAllCars();
+
     void addCar(Car car);
 
     void addEngine(Engine engine);

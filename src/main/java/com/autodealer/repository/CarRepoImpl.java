@@ -4,12 +4,16 @@ import com.autodealer.model.entity.car.Car;
 import com.autodealer.model.entity.car.CarRepo;
 import com.autodealer.model.entity.car.Engine;
 import com.autodealer.model.entity.car.Model;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 import java.util.List;
 
 import static com.autodealer.repository.Util.castList;
@@ -20,7 +24,9 @@ import static com.autodealer.repository.Util.castList;
 
 @Repository
 @Transactional
+
 public class CarRepoImpl implements CarRepo {
+
 
     @Inject
     private SessionFactory sessionFactory;
@@ -49,6 +55,13 @@ public class CarRepoImpl implements CarRepo {
                         .add(Restrictions.ilike("brand", "%" + brand + "%"))
                         .list()
         );
+    }
+
+    @Override
+    public List<Car> getAllCars() {
+        //Query query = sessionFactory.getCurrentSession().createQuery("FROM Car c");
+        Query query = sessionFactory.getCurrentSession().getNamedQuery("ALLCARS");
+        return query.list();
     }
 
     @Override
