@@ -1,5 +1,7 @@
 package com.autodealer.model.entity.autodealer;
 
+import java.util.List;
+
 /**
  * Created by ilshyma on 18.03.2016.
  */
@@ -11,7 +13,7 @@ public interface AutoDealerRepo {
 
     AutoDealer findAutoDealerById(Long id);
 
-    AutoDealer findAutoDealerByDealerName(String dealerName);
+    List<AutoDealer> findAutoDealerByDealerName(String dealerName);
 
     void deleteDealer (AutoDealer autoDealer);
 

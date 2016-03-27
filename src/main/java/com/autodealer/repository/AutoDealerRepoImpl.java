@@ -3,10 +3,14 @@ package com.autodealer.repository;
 import com.autodealer.model.entity.autodealer.AutoDealer;
 import com.autodealer.model.entity.autodealer.AutoDealerRepo;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.List;
+
+import static com.autodealer.repository.Util.castList;
 
 /**
  * Created by user on 24.03.2016.
@@ -35,9 +39,14 @@ public class AutoDealerRepoImpl implements AutoDealerRepo {
     }
 
     @Override
-    public AutoDealer findAutoDealerByDealerName(String dealerName) {
-        return null;
-    }
+    public List<AutoDealer> findAutoDealerByDealerName(String dealerName) {
+
+        return castList(
+                sessionFactory.getCurrentSession()
+                       .createCriteria(AutoDealer.class)
+                       .add(Restrictions.ilike("autoDealerInfo.pointName", "%"+ dealerName +"%"))
+                .list()
+        ); }
 
     @Override
     public void deleteDealer(AutoDealer autoDealer) {

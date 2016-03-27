@@ -42,7 +42,7 @@ public class CarRepoImpl implements CarRepo {
         return castList(
                 sessionFactory.getCurrentSession()
                         .createCriteria(Car.class)
-                        .add(Restrictions.ilike("model", "%" + model + "%"))
+                        .add(Restrictions.eq("model", model))
                         .list()
         );
     }
