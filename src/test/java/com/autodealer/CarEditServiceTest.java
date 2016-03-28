@@ -49,22 +49,6 @@ public class CarEditServiceTest {
     private AutoDealerRepo autoDealerRepo;
 
     @Test
-    public void addDealers() {
-        AutoDealer souzDealser = dealerEditService.createDealer("Souz", "kirova 98", 47.4459111, 35.0608485);
-        AutoDealer aelitaDealser = dealerEditService.createDealer("Elita", "nabereznaya 98", 46.4459879, 36.0608485);
-        AutoDealer ekipajDealser = dealerEditService.createDealer("Ekipaj", "nabereznaya 98", 49.4459879, 38.0608485);
-
-    }
-
-    @Test
-    public void findDealerByName() {
-        String testDealerName = "Aelita";
-        List<AutoDealer> dealersList = autoDealerRepo.findAutoDealerByDealerName(testDealerName);
-        dealersList.forEach(item -> System.out.println(item.getAutoDealerInfo().getPointName()));
-    }
-
-
-    @Test
     public void addCars() {
 
         personalEditService.createPersonal(PersonalPost.DIRECTOR, "M", LocalDate.of(2015, 02, 01),
@@ -78,18 +62,34 @@ public class CarEditServiceTest {
         carEditService.createCar("Toyota",
                 carEditService.createModel("Corolla",
                         carEditService.createEngine("147e", Fuel.PETROL, 103), Vehicle.SEDAN, Transmission.MT), 2015,
-                dealerEditService.createDealer("AELITA", "nabereznaya 22", 48.4459879, 35.0608485));
+                dealerEditService.createDealer("AELITA", "nabereznaya 22", 48.4459879, 35.0608485), 125555);
 
         carEditService.createCar("Lada",
                 carEditService.createModel("Priora",
                         carEditService.createEngine("21124", Fuel.PETROL, 98), Vehicle.HATCHBACK, Transmission.MT), 2012,
-                autoDealerRepo.findAutoDealerByDealerName("Souz").get(0));
+                autoDealerRepo.findAutoDealerByDealerName("Souz").get(0), 250000);
 
         carEditService.createCar("Gaz",
                 carEditService.createModel("Ruta",
                         carEditService.createEngine("G158", Fuel.GAS, 150), Vehicle.LIFTBACK, Transmission.AT), 2010,
-                souzDealser);
+                souzDealser, 300000);
 
+    }
+
+    @Test
+    public void addDealers() {
+        AutoDealer souzDealser = dealerEditService.createDealer("Souz", "kirova 98", 47.4459111, 35.0608485);
+        AutoDealer aelitaDealser = dealerEditService.createDealer("Elita", "nabereznaya 98", 46.4459879, 36.0608485);
+        AutoDealer ekipajDealser = dealerEditService.createDealer("Ekipaj", "nabereznaya 98", 49.4459879, 38.0608485);
+
+    }
+
+
+    @Test
+    public void findDealerByName() {
+        String testDealerName = "Aelita";
+        List<AutoDealer> dealersList = autoDealerRepo.findAutoDealerByDealerName(testDealerName);
+        dealersList.forEach(item -> System.out.println(item.getAutoDealerInfo().getPointName()));
     }
 
     @Test
@@ -122,6 +122,14 @@ public class CarEditServiceTest {
         autoDealer.getAutoDealerInfo().setPhone(newPhone);
         autoDealer.getAutoDealerInfo().setSite(newSite);
         autoDealerRepo.updateDealerInfo(autoDealer);
-
     }
+
+    @Test
+    public void getCheaperCar(){
+        log.info("getCheaperCar()");
+        int maxSumForBuyCar = 150000;
+        carRepo.findCarLowerPrice(maxSumForBuyCar);
+        System.out.println(carRepo.findCarLowerPrice(maxSumForBuyCar));
+    }
+
 }

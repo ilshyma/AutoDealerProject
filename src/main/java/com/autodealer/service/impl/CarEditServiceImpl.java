@@ -49,12 +49,13 @@ public class CarEditServiceImpl implements CarEditService {
     }
 
     @Override
-    public Car createCar(String brand, Model model, int productionYear, AutoDealer autoDealer) {
+    public Car createCar(String brand, Model model, int productionYear, AutoDealer autoDealer, int price) {
         final Car car = new Car();
         car.setBrand(brand);
         car.setModel(model);
         car.setProductionYear(productionYear);
         car.setAutoDealer(autoDealer);
+        car.setPrice(price);
 
         carRepo.addCar(car);
         return car;

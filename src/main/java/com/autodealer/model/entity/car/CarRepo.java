@@ -22,4 +22,6 @@ public interface CarRepo {
     void addModel(Model model);
 
     void deleteCar (Car car);
+
+    List <Car> findCarLowerPrice (int price);
 }

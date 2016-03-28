@@ -1,15 +1,20 @@
 package com.autodealer.model.entity.car;
 
 import com.autodealer.model.entity.autodealer.AutoDealer;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Created by ilshyma on 14.03.2016.
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "ALLCARS", query = "FROM Car c")
+        @NamedQuery(name = "ALLCARS", query = "FROM Car c"),
+        @NamedQuery(name = "LowerPrice", query = "from Car c where price <= :price")
 })
 public class Car {
 
@@ -32,6 +37,8 @@ public class Car {
     @JoinColumn(name = "autoDealer_id", nullable = false)
     private AutoDealer autoDealer;
 
+    @Column(nullable = false)
+    private int price;
 
     public Car() {
     }
@@ -40,6 +47,7 @@ public class Car {
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -75,6 +83,14 @@ public class Car {
 
     public void setAutoDealer(AutoDealer autoDealer) {
         this.autoDealer = autoDealer;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 }

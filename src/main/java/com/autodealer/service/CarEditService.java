@@ -13,6 +13,6 @@ public interface CarEditService {
 
     Model createModel(String modelName, Engine engine, Vehicle vehicle, Transmission transmission);
 
-    Car createCar(String brand, Model model, int productionYear, AutoDealer autoDealer);
+    Car createCar(String brand, Model model, int productionYear, AutoDealer autoDealer, int price);
 
 }

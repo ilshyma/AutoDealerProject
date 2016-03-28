@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-
 import java.util.List;
 
 import static com.autodealer.repository.Util.castList;
@@ -59,7 +56,6 @@ public class CarRepoImpl implements CarRepo {
 
     @Override
     public List<Car> getAllCars() {
-        //Query query = sessionFactory.getCurrentSession().createQuery("FROM Car c");
         Query query = sessionFactory.getCurrentSession().getNamedQuery("ALLCARS");
         return query.list();
     }
@@ -89,8 +85,12 @@ public class CarRepoImpl implements CarRepo {
 
     }
 
-
-
+    @Override
+    public List<Car> findCarLowerPrice(int price) {
+        Query query = sessionFactory.getCurrentSession().getNamedQuery("LowerPrice");
+        query.setParameter("price", price);
+        return  query.list();
+    }
 
 
 }
