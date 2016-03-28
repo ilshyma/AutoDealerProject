@@ -29,9 +29,9 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Persistence.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CarEditServiceTest {
+public class persistanceTest {
 
-    private static final Logger log = LoggerFactory.getLogger(CarEditServiceTest.class);
+    private static final Logger log = LoggerFactory.getLogger(persistanceTest.class);
 
     @Inject
     private CarEditService carEditService;
@@ -48,13 +48,17 @@ public class CarEditServiceTest {
     @Inject
     private AutoDealerRepo autoDealerRepo;
 
+    static {
+        System.setProperty("env", "test");
+    }
+
     @Test
     public void addCars() {
 
         personalEditService.createPersonal(PersonalPost.DIRECTOR, "M", LocalDate.of(2015, 02, 01),
                 personalEditService.createUser("admin", "Director", "123456", Role.ADMIN));
         personalEditService.createPersonal(PersonalPost.MANAGER, "M", LocalDate.of(2015, 01, 01),
-                personalEditService.createUser("admin", "Director", "123456", Role.ADMIN),
+                personalEditService.createUser("manager", "Manager", "123456", Role.ADMIN),
                 dealerEditService.createDealer("AELITA2", "nabereznaya 252", 48.4459879, 35.0608485));
 
         AutoDealer souzDealser = dealerEditService.createDealer("Souz", "nabereznaya 98", 48.4459879, 35.0608485);
