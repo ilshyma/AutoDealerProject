@@ -21,14 +21,15 @@ import java.util.Properties;
  */
 
 @Configuration
+
+@EnableTransactionManagement
+@PropertySource(value = {"classpath:/dbProp/hibernate_${env}_Spring_MySQL.properties"})
 @ComponentScan({
         "com.autodealer.config",
         "com.autodealer.model",
         "com.autodealer.repository",
         "com.autodealer.service"
 })
-@EnableTransactionManagement
-@PropertySource(value = {"classpath:/dbProp/hibernate_${env}_Spring_MySQL.properties"})
 public class Persistence {
 
     @Autowired
