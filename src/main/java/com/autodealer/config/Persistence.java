@@ -21,11 +21,10 @@ import java.util.Properties;
  */
 
 @Configuration
-
 @EnableTransactionManagement
-@PropertySource(value = {"classpath:/dbProp/hibernate_${env}_Spring_MySQL.properties"})
+//@PropertySource(value = {"classpath:/dbProp/hibernate_${env}_Spring_MySQL.properties"})
+@PropertySource(value = {"classpath:/dbProp/hibernate_test_Spring_MySQL.properties"})
 @ComponentScan({
-        "com.autodealer.config",
         "com.autodealer.model",
         "com.autodealer.repository",
         "com.autodealer.service"
